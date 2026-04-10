@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Carla logo">
+  <title>Carla — logo</title>
+  <!-- Outer ring -->
+  <circle cx="60" cy="60" r="54" stroke="#7c6cfc" stroke-width="4" fill="none" opacity="0.98" />
+  <!-- Minimal 'C' mark -->
+  <path d="M83 36 A28 28 0 1 0 83 84" stroke="#7c6cfc" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

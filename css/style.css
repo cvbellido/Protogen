@@ -1,21 +1,24 @@
 :root {
-  color-scheme: light;
-  --bg: #f6f0ff;
-  --surface: rgba(255, 255, 255, 0.92);
-  --surface-strong: #ffffff;
-  --text: #2b1b45;
-  --muted: #6d5f82;
+  color-scheme: dark;
+  --bg: #0f0f13;
+  --surface: rgba(255,255,255,0.03);
+  --surface-strong: rgba(255,255,255,0.04);
+  --text: #eef0fb;
+  --muted: #b9b4cf;
   --accent: #8c6aff;
-  --accent-strong: #6b4fff;
-  --shadow: 0 36px 80px rgba(89, 59, 183, 0.12);
-  --border: rgba(140, 106, 255, 0.16);
+  --accent-green: #34d399;
+  --accent-strong: #9e88ff;
+  --shadow: 0 30px 60px rgba(6,6,10,0.6);
+  --border: rgba(255,255,255,0.04);
+  /* spacing scale */
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -24,9 +27,7 @@ html {
 
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at top left, rgba(140, 106, 255, 0.24), transparent 34%),
-              radial-gradient(circle at bottom right, rgba(103, 196, 255, 0.18), transparent 30%),
-              var(--bg);
+  background: var(--bg);
   color: var(--text);
   line-height: 1.6;
 }
@@ -35,8 +36,6 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 20%),
-              radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.45), transparent 22%);
   pointer-events: none;
   z-index: -1;
 }
@@ -44,25 +43,25 @@ body::before {
 .page {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 3rem 0 4rem;
+  padding: var(--space-lg) 0 var(--space-xl);
 }
 
 header {
   position: relative;
   overflow: hidden;
-  padding: 2.5rem 2rem 3.5rem;
-  border-radius: 32px;
-  background: var(--surface);
+  padding: var(--space-lg) var(--space) var(--space-lg);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(6px) saturate(120%);
 }
 
 header::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../assets/hero-pattern.svg") center/cover no-repeat;
-  opacity: 0.12;
+  background: none; /* removed decorative hero-pattern image */
+  opacity: 0;
   pointer-events: none;
 }
 
@@ -70,8 +69,8 @@ header::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: var(--space);
+  margin-bottom: var(--space-md);
   position: relative;
   z-index: 1;
 }
@@ -82,6 +81,18 @@ header::before {
   letter-spacing: -0.03em;
   color: var(--text);
   text-decoration: none;
+}
+
+/* Logo in header */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.brand-logo {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 
 .nav-links {
@@ -105,18 +116,24 @@ header::before {
 
 .hero-grid {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
-  align-items: center;
+  gap: var(--space-lg);
+  /* keep hero content in a flexible left column and a stable-right column for the weather card */
+  grid-template-columns: 1fr 320px;
+  align-items: start; /* top-align hero content and aside (weather) */
   position: relative;
-  z-index: 1;
+  z-index: 0; /* sit behind following page sections to avoid overlapping content when scrolling */
+}
+
+/* Ensure direct children align to the top of their grid cells */
+.hero-grid > * {
+  align-self: start;
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-xs);
   color: var(--accent-strong);
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -137,7 +154,8 @@ h1,
 .page-title {
   font-size: clamp(3rem, 4vw, 4.5rem);
   line-height: 0.96;
-  margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: var(--space-xs);
   letter-spacing: -0.04em;
 }
 
@@ -148,7 +166,7 @@ h1,
 .intro,
 .lead {
   max-width: 42rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: var(--space-md);
   color: var(--muted);
   font-size: 1.05rem;
 }
@@ -158,11 +176,11 @@ h1,
   display: inline-flex;
   align-items: center;
   gap: 0.85rem;
-  padding: 1rem 1.6rem;
+  padding: 0.85rem 1.4rem;
   border-radius: 999px;
-  border: 1px solid rgba(140, 106, 255, 0.2);
-  background: linear-gradient(135deg, rgba(140, 106, 255, 0.12), rgba(255, 255, 255, 0.72));
-  color: var(--accent-strong);
+  border: 1px solid rgba(124,108,252,0.18);
+  background: #7c6cfc;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 700;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -171,17 +189,28 @@ h1,
 .cta:hover,
 .link-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(140, 106, 255, 0.18);
+  box-shadow: 0 18px 40px rgba(124,108,252,0.18);
 }
 
 .hero-card,
 .card,
 .contact-card {
-  padding: 2rem;
-  border-radius: 28px;
-  background: linear-gradient(180deg, #ffffff 0%, #fdfaff 100%);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 24px 60px rgba(33, 23, 54, 0.08);
+  padding: var(--space-md);
+  border-radius: 16px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(3,6,18,0.6);
+}
+
+/* Space the primary CTA on the home hero from following content */
+#home .cta {
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 680px) {
+  #home .cta {
+    margin-bottom: 1.25rem;
+  }
 }
 
 .hero-card h2,
@@ -199,35 +228,72 @@ h1,
 
 .pill-list {
   display: grid;
-  gap: 0.85rem;
-  margin-top: 1.5rem;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
 }
 
 .pill {
-  padding: 0.9rem 1rem;
+  padding: 0.7rem 0.9rem;
   border-radius: 999px;
-  background: rgba(140, 106, 255, 0.1);
-  color: #4d3878;
+  background: rgba(52,211,153,0.12);
+  color: var(--text);
   display: inline-flex;
   font-size: 0.95rem;
   width: max-content;
+}
+
+/* Green accent usage */
+.pill.green,
+.pill--green {
+  background: rgba(52,211,153,0.12); /* translucent #34d399 */
+  color: var(--text);
+  border: 1px solid rgba(52,211,153,0.12);
+}
+
+.stat.positive strong {
+  color: var(--accent-green);
 }
 
 .features,
 .card-grid,
 .contact-grid {
   display: grid;
-  gap: 1.35rem;
+  gap: var(--space-md);
+}
+
+/* Two-column layout for "What I specialize on" */
+.specialize-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+/* simple icon used inside feature cards */
+.feature-icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.75rem;
+  color: var(--accent-strong);
+}
+
+.feature-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .feature,
 .card,
 .project-card {
-  padding: 1.35rem;
-  border-radius: 24px;
-  background: var(--surface-strong);
-  border: 1px solid rgba(136, 111, 255, 0.12);
-  box-shadow: 0 14px 30px rgba(89, 59, 183, 0.08);
+  padding: 1.15rem;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 10px 22px rgba(3,6,18,0.45);
 }
 
 .feature h3,
@@ -245,11 +311,11 @@ h1,
 }
 
 .stat {
-  padding: 1.5rem;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.9);
+  padding: var(--space-sm);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
   text-align: center;
-  border: 1px solid rgba(140, 106, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.03);
 }
 
 .stat strong {
@@ -260,10 +326,10 @@ h1,
 }
 
 .section-title {
-  margin-bottom: 1.35rem;
+  margin-bottom: var(--space-md);
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space);
   font-size: 0.95rem;
   color: var(--accent-strong);
   text-transform: uppercase;
@@ -279,28 +345,93 @@ h1,
 }
 
 .page-body {
-  padding: 3rem 0 0;
+  padding: var(--space-lg) 0 0;
 }
 
 .page-section {
-  margin-top: 2.5rem;
+  margin-top: var(--space-lg);
 }
 
 .grid-2 {
   display: grid;
-  gap: 1.8rem;
+  gap: var(--space-md);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .project-card {
-  display: grid;
-  gap: 0.85rem;
+  display: flex;
+  flex-direction: column; /* vertical cards */
+  gap: var(--space-sm);
+  min-height: 160px;
+  justify-content: start;
 }
+
+/* Project image styles */
+/* project images removed; use pills for tags */
+
+.card-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* About layout: headshot left, text right */
+.about-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-md);
+  align-items: start;
+}
+
+
+.about-grid .headshot {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(124,108,252,0.12);
+  box-shadow: 0 18px 40px rgba(124,108,252,0.06);
+  background: linear-gradient(180deg, rgba(124,108,252,0.03), rgba(255,255,255,0.01));
+  filter: grayscale(100%);
+}
+
+@media (max-width: 680px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-grid .headshot {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+  }
+}
+
+.pill-list-inline {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  margin-top: var(--space-xs);
+}
+
+.pill-inline {
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(52,211,153,0.12);
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+/* Headshot */
+/* removed headshot overlay styles (headshot placed outside the project now) */
 
 .contact-grid {
   grid-template-columns: minmax(0, 1fr) 320px;
   align-items: start;
 }
+
+/* remove single-column override for contact; restore original two-column layout */
+/* (original rule is defined above as .contact-grid) */
 
 .contact-card {
   display: grid;
@@ -319,12 +450,32 @@ h1,
   font-weight: 700;
 }
 
+/* Ensure CTA inside contact-card keeps primary CTA styling */
+.contact-card a.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(124,108,252,0.18);
+  background: #7c6cfc;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Make the contact CTA hug its text (smaller padding) */
+.contact-card a.cta {
+  padding: 0.6rem 1rem;
+}
+
 .footer {
   margin-top: 4rem;
   padding: 2rem 2rem 1rem;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.86);
-  border: 1px solid rgba(140, 106, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -376,11 +527,11 @@ a.social {
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
-  padding: 1.1rem 1.25rem;
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(253,250,255,0.98));
-  border: 1px solid rgba(136,111,255,0.08);
-  box-shadow: 0 18px 40px rgba(89,59,183,0.06);
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 10px 28px rgba(3,6,18,0.5);
   max-width: 360px;
 }
 

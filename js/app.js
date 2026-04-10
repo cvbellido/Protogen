@@ -82,3 +82,66 @@
     document.addEventListener('DOMContentLoaded', init);
   } else init();
 })();
+
+// Navigation smooth-scroll, active link highlighting, and simple parallax
+(function () {
+  function scrollToHash(hash) {
+    const el = document.querySelector(hash);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // handle nav clicks
+  document.addEventListener('DOMContentLoaded', function () {
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(a => {
+      a.addEventListener('click', function (e) {
+        const href = a.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          scrollToHash(href);
+          // update active immediately
+          links.forEach(x => x.classList.remove('active'));
+          a.classList.add('active');
+        }
+      });
+    });
+
+    // active link on scroll
+    const sections = Array.from(document.querySelectorAll('main [id]')).filter(s => ['home','about','work','contact'].includes(s.id));
+    const navMap = {};
+    links.forEach(a => navMap[a.getAttribute('href')] = a);
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(ent => {
+        if (ent.isIntersecting) {
+          const id = '#' + ent.target.id;
+          Object.values(navMap).forEach(n => n.classList.remove('active'));
+          if (navMap[id]) navMap[id].classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => io.observe(s));
+
+    // simple parallax for elements with data-parallax
+    const parallaxEls = document.querySelectorAll('[data-parallax]');
+    if (parallaxEls.length) {
+      let ticking = false;
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const sc = window.scrollY;
+            parallaxEls.forEach(el => {
+              const speed = parseFloat(el.getAttribute('data-parallax')) || 0.2;
+              el.style.transform = `translateY(${Math.round(sc * speed)}px)`;
+            });
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  });
+})();

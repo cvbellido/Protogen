@@ -11,65 +11,26 @@
   <main class="page">
     <header>
       <div class="topnav">
-        <a class="brand" href="index.html">Carla</a>
+        <a class="brand" href="#home">
+          <img src="assets/logo.svg" alt="Carla" class="brand-logo" />
+        </a>
         <div class="nav-links">
-          <a class="active" href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="work.html">Work</a>
-          <a href="contact.html">Contact</a>
+          <a class="active" href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
-      <div class="hero-grid">
+      <div id="home" class="hero-grid" data-parallax="0.15">
         <section>
           <span class="eyebrow">Designer & storyteller</span>
-          <h1>Hi, I’m Carla — crafting warm digital experiences for bold brands.</h1>
-          <p class="intro">I design elegant interfaces, visual systems, and brand stories that feel human, polished, and memorable. My work blends thoughtful typography, rich color, and simple motion to bring ideas to life.</p>
+          <h1>Hi, I’m Carla Bellido — I create digital experiences for bold brands.</h1>
+          <p class="intro">Designing intuitive digital experiences that bridge user needs and business goals -- from early research to polished, developer ready prototypes.</p>
           <a class="cta" href="#work">See my work</a>
+        
         </section>
 
-        <aside class="hero-card">
-          <h2>What I love to create</h2>
-          <p>Beautiful products, branded campaigns, and immersive journeys for people who want design with personality and purpose.</p>
-          <div class="pill-list">
-            <span class="pill">Brand identity</span>
-            <span class="pill">Product design</span>
-            <span class="pill">Creative direction</span>
-            <span class="pill">Visual storytelling</span>
-          </div>
-        </aside>
-      </div>
-
-      <div class="features">
-        <article class="feature">
-          <h3>Thoughtful design systems</h3>
-          <p>Every project is built on clarity, color, and structure so brands feel cohesive at every touchpoint.</p>
-        </article>
-        <article class="feature">
-          <h3>Strategic creativity</h3>
-          <p>I partner with teams to uncover stories and transform them into experiences that connect and convert.</p>
-        </article>
-        <article class="feature">
-          <h3>Simple, elegant execution</h3>
-          <p>The final result is always polished, approachable, and designed to delight both users and stakeholders.</p>
-        </article>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <strong>8+</strong>
-          years designing interfaces
-        </div>
-        <div class="stat">
-          <strong>25+</strong>
-          brands launched
-        </div>
-        <div class="stat">
-          <strong>100%</strong>
-          creative collaboration
-        </div>
-      </div>
-      <div style="margin-top:1.5rem;">
-        <div id="weather" class="hero-card weather-card" aria-live="polite">
+        <aside id="weather" class="hero-card weather-card" aria-live="polite">
           <div class="weather-main">
             <div class="weather-emoji" id="weather-emoji">—</div>
             <div>
@@ -78,29 +39,128 @@
             </div>
           </div>
           <div class="weather-meta" id="weather-meta">Detecting location…</div>
-        </div>
+        </aside>
+      </div>
+
+
+      
+      <div class="specialize-grid">
+        
+        <article class="feature">
+          <div class="feature-head">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.5" rx="1"/>
+              <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.5" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.5" rx="1"/>
+              <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.5" rx="1"/>
+            </svg>
+            <h3>Thoughtful design systems</h3>
+          </div>
+          <p>Every project is built on clarity, color, and structure so brands feel cohesive at every touchpoint.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-head">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M12 3v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M12 14v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M3 8h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M3 16h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <h3>Strategic creativity</h3>
+          </div>
+          <p>I partner with teams to uncover stories and transform them into experiences that connect and convert.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-head">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M4 12l4 4L20 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6.5 4.5l.9 2 .9-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 4.5l.9 2 .9-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>Simple, elegant execution</h3>
+          </div>
+          <p>The final result is always polished, approachable, and designed to delight both users and stakeholders.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-head">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="12" cy="12" r="2" fill="currentColor"/>
+            </svg>
+            <h3>Design with Purpose</h3>
+          </div>
+          <p>I align design decisions to measurable outcomes and business goals.</p>
+        </article>
       </div>
     </header>
 
+    <section id="about" class="page-section">
+      <div class="section-title">About</div>
+      <div class="about-grid">
+        <img src="assets/headshot.jpg" alt="Carla headshot" class="headshot" />
+        <div>
+          <p class="lead">I’m Carla, a designer who creates visual systems and product moments with clarity, emotion, and a sense of calm. My practice blends strategy with craft so every experience feels intentional.</p>
+          <p class="lead">I enjoy working with creative teams, founders, and product leaders to design thoughtful brands and digital experiences. If you have a project in mind, send a note and I’ll reply promptly.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="work" class="page-section">
       <div class="section-title">Featured work</div>
-      <div class="features">
-        <article class="feature">
-          <h3>Elevated retail identity</h3>
-          <p>Designed a premium packaging ecosystem and web experience for a boutique candle brand, balancing warmth with modern luxury.</p>
+      <div class="card-grid">
+        <article class="project-card">
+          <h3>Project One</h3>
+          <p>UX & product design for a lifestyle app — onboarding, flows, and micro-interactions.</p>
+          <div class="pill-list-inline">
+            <span class="pill-inline pill green">Product Design</span>
+            <span class="pill-inline">Onboarding</span>
+            <span class="pill-inline">Mobile</span>
+          </div>
         </article>
-        <article class="feature">
-          <h3>Mobile-first product launch</h3>
-          <p>Built a clean, expressive interface for a wellness app that simplifies onboarding and keeps users engaged at every step.</p>
+        <article class="project-card">
+          <h3>Project Two</h3>
+          <p>Brand and e-commerce experience with refined product pages and conversion flows.</p>
+          <div class="pill-list-inline">
+            <span class="pill-inline">Brand</span>
+            <span class="pill-inline">E‑commerce</span>
+            <span class="pill-inline">UI</span>
+          </div>
+        </article>
+        <article class="project-card">
+          <h3>Project Three</h3>
+          <p>Mobile-first wellness product — simplified navigation and calm visual language.</p>
+          <div class="pill-list-inline">
+            <span class="pill-inline">Mobile</span>
+            <span class="pill-inline">UX</span>
+            <span class="pill-inline">Research</span>
+          </div>
+        </article>
+        <article class="project-card">
+          <h3>Project Four</h3>
+          <p>Campaign and landing experience highlighting photography and editorial layout.</p>
+          <div class="pill-list-inline">
+            <span class="pill-inline">Campaign</span>
+            <span class="pill-inline">Landing</span>
+            <span class="pill-inline">Creative Direction</span>
+          </div>
         </article>
       </div>
     </section>
 
-    <footer class="footer">
-      <p>Want to collaborate or talk through a project? I’m always excited to design something unforgettable.</p>
-      <a class="social" href="mailto:hello@carla.design">hello@carla.design</a>
-    </footer>
+    <section id="contact" class="page-section">
+      <div class="section-title">Contact</div>
+      <div class="hero-grid">
+        <section>
+          <p class="lead">Whether you have a brand refresh, product launch, or creative direction need, I’m happy to connect and explore the best way to bring it to life.</p>
+          <a class="cta" href="mailto:carla.bellido@slalom.com">Get in touch</a>
+        </section>
+      </div>
+    </section>
   </main>
   <script src="js/app.js"></script>
 </body>
 </html>
+
